@@ -1,21 +1,50 @@
 baseURL = "https://juni2dev.github.io/ed-blog/"
 languageCode = "fr"
-title = "Edmond Kameni | Blog"
+title = "Edmond Kameni"
 theme = "PaperMod"
 
 [params]
   author = "Edmond Kameni"
-  description = "Cybersécurité, Réseaux, ML & DevOps"
+  description = "Cybersécurité, Réseaux, Cryptographie,  ML & DevOps"
   ShowReadingTime = true
   ShowShareButtons = false
   ShowPostNavLinks = true
+  ShowToc = true
+  TocOpen = false
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  profileMode = "index"
+
+  [params.homeInfoParams]
+    Title = "Edmond Kameni"
+    Content = "Ingénieur en réseaux & cybersécurité · ML & DevOps · Je partage mes projets, veilles techniques et retours d'expérience."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/juni2dev"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://linkedin.com/in/edmond-kameni"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
 
 [menu]
+ # [[menu.main]]
+  #  name = "Blog"
+   # url = "/posts/"
+   # weight = 1
   [[menu.main]]
-    name = "Blog"
-    url = "/posts/"
-    weight = 1
+    name = "Tags"
+    url = "/tags/"
+    weight = 2
+  [[menu.main]]
+    name = "À propos"
+    url = "/about/"
+    weight = 3
   [[menu.main]]
     name = "Portfolio"
-    url = "https://juni2dev.github.io"
-    weight = 2
+    url = "https://juni2dev.github.io/edmond.github.io/"
+    weight = 4

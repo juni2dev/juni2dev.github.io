@@ -1,12 +1,11 @@
 ---
-title: "Mon premier article"
-date: 2026-03-09
+title: "Cryptographie Post-Quantique"
+date: 2026-03-10
 draft: false
-tags: ["cybersécurité","cryptographie", "réseaux"]
+tags: ["cybersécurité", "cryptographie", "réseaux"]
+categories: ["Veille technique"]
+description: "🔐 Pourquoi s’intéresse-t-on particulièrement à TLS, SSH et IPsec dans la transition post-quantique ?"
 ---
-
-🔐 Pourquoi s’intéresse-t-on particulièrement à TLS, SSH et IPsec dans la transition post-quantique ?
-
 
 📅 Le 2 février 2026, l’ANSSI a publié plusieurs fiches techniques concernant la transition post-quantique de trois protocoles majeurs :\
 🔹 TLS 1.3\
