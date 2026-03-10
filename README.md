@@ -28,8 +28,8 @@ hugo version
 ### 2. Créer le projet
 
 ```bash
-hugo new site ed-blog
-cd ed-blog
+hugo new site you-blog
+cd you-blog
 git init
 ```
 
@@ -44,12 +44,12 @@ git submodule add https://github.com/adityatelange/hugo-PaperMod themes/PaperMod
 ```toml
 baseURL = "https://your github url/you-blog/"
 languageCode = "fr"
-title = "Your name if you want | Blog" <!-- You can shape this part at your taste -->
+title = "Your name if you want | Blog" # You can shape this part at your taste
 theme = "PaperMod"
 
 [params]
   author = "Your name"
-  description = "Cybersécurité, Réseaux, ML & DevOps" <!-- You can shape this part at your taste -->
+  description = "Cybersécurité, Réseaux, ML & DevOps" # You can shape this part at your taste 
   ShowReadingTime = true
   ShowShareButtons = false
   ShowPostNavLinks = true
@@ -59,7 +59,7 @@ theme = "PaperMod"
 
   [params.homeInfoParams]
     Title = "Your name"
-    Content = "Étudiant ingénieur en réseaux & cybersécurité · ML & DevOps" <!-- You can shape this part at your taste -->
+    Content = "Étudiant ingénieur en réseaux & cybersécurité · ML & DevOps" # You can shape this part at your taste 
 
   [[params.socialIcons]]
     name = "github"
@@ -67,7 +67,7 @@ theme = "PaperMod"
 
   [[params.socialIcons]]
     name = "linkedin"
-    url = "https://your linkedin if you're interested" <!-- You can shape this part at your taste -->
+    url = "https://your linkedin if you're interested" # You can shape this part at your taste 
 
 [taxonomies]
   tag = "tags"
@@ -88,7 +88,7 @@ theme = "PaperMod"
     weight = 3
   [[menu.main]]
     name = "Portfolio"
-    url = "https://your portfolio url" <!-- You can shape this part at your taste -->
+    url = "https://your portfolio url" # You can shape this part at your taste
     weight = 4
 ```
 
