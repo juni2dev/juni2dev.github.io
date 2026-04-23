@@ -6,7 +6,7 @@ dateFormat = "02 January 2006"
 
 defaultTheme = "auto"
 
-mainSections = ["Cybersécurité", "Réseaux", "DevSecOps/Infra", "Labs", "Articles"]
+mainSections = ["cybersecurite", "reseau", "labs", "articles"]
 
 showShare = false
 numberOfRecentPosts = 5
