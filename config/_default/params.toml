@@ -27,5 +27,5 @@ showRelatedInSidebar = true
 
 
 
-[author]
-  name = "NetSec Core"
+#[author]
+  #name = "NetSec Core"
