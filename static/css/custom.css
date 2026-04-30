@@ -753,3 +753,15 @@ html[data-mode="dim"] .home-recent h2 { color: #e2e8f0 !important; }
   .home-intro h1 { font-size: 1.6rem !important; }
   .home-sections-grid, .home-recent-grid { grid-template-columns: 1fr; }
 }
+
+/* Logo navbar */
+img.logo {
+  height: 38px !important;
+  width: auto !important;
+  display: block;
+}
+
+.nav_brand {
+  display: flex;
+  align-items: center;
+}
