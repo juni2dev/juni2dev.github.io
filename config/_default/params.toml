@@ -24,7 +24,7 @@ showRelatedInSidebar = true
 
 # customize footer icon. see issue https://github.com/chipzoller/hugo-clarity/issues/77
 # footerLogo = "icons/copy.svg"
-
+logo = "images/logo.svg"
 
 
 #[author]
