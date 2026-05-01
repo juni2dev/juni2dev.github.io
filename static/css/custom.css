@@ -765,3 +765,9 @@ img.logo {
   display: flex;
   align-items: center;
 }
+
+/* Footer logo size */
+footer .icon_2 {
+  height: 48px !important;
+  width: auto !important;
+}
