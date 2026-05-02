@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="home-layout">
+  <section class="home-intro">
+    <p class="home-tagline">Labs · Cybersécurité · Réseaux</p>
+    <p>Writeups techniques, labs pratiques et notes de veille — du réseau à l'offensive.</p>
+  </section>
+  <section class="home-sections">
+    <h2>Explorer par thème</h2>
+    <div class="home-sections-grid">
+      {{ range .Site.Sections }}
+      <a href="{{ .Permalink }}" class="home-section-card">
+        <div class="home-section-title">{{ .Title }}</div>
+        <div class="home-section-desc">{{ .Description }}</div>
+        <div class="home-section-count">{{ len .Pages }} article{{ if gt (len .Pages) 1 }}s{{ end }}</div>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+  <section class="home-recent">
+    <h2>Derniers articles</h2>
+    <div class="home-recent-grid">
+      {{ range first 6 (where .Site.RegularPages "Section" "!=" "").ByDate.Reverse }}
+      {{ if and .Date.Year (gt .Date.Year 2000) }}
+      <article class="home-recent-card">
+        <a href="{{ .Permalink }}" class="home-recent-title">{{ .Title }}</a>
+        <div class="home-recent-meta">
+          <span class="home-recent-section">{{ .Section }}</span>
+          <span>{{ .Date.Format "02 Jan 2006" }}</span>
+        </div>
+        {{ if .Params.tags }}
+        <div class="section-tags">
+          {{ range first 3 .Params.tags }}
+          <span class="section-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
+      </article>
+      {{ end }}
+      {{ end }}
+    </div>
+  </section>
+</div>
+{{ end }}
