@@ -13,7 +13,7 @@ numberOfRecentPosts = 5
 codeLineNumbers = true
 codeMaxLines = 30
 customFonts = true #enable a custom style (css,js)
-introURL = "/about/"
+# introURL = "/about/"
 enableSearch = true
 
 
