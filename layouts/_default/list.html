@@ -1,23 +1,21 @@
 {{ define "main" }}
-<div class="section-page" style="padding:0;max-width:100%;width:100%;">
+{{ if not .IsHome }}
+<div class="section-page">
   <header class="section-header">
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p class="section-description">{{ . }}</p>{{ end }}
   </header>
-
-  <div class="section-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:1.2rem;padding:1.5rem 2rem 2rem;width:100%;">
-    {{ range .Pages }}
+  <div class="section-grid">
+    {{ range .Pages.ByDate.Reverse }}
     <article class="section-card">
       <a href="{{ .Permalink }}">{{ .Title }}</a>
       <div class="section-meta">
-        {{ .Date.Format "02 January 2006" }} · {{ .ReadingTime }} min de lecture
+        {{ .Date.Format "02 Jan 2006" }} · {{ .ReadingTime }} min de lecture
       </div>
-      {{ with .Description }}
-      <p class="section-excerpt">{{ . }}</p>
-      {{ end }}
+      {{ with .Summary }}<p class="section-excerpt">{{ . | plainify | truncate 120 }}</p>{{ end }}
       {{ if .Params.tags }}
       <div class="section-tags">
-        {{ range .Params.tags }}
+        {{ range first 3 .Params.tags }}
         <span class="section-tag">{{ . }}</span>
         {{ end }}
       </div>
@@ -26,4 +24,7 @@
     {{ end }}
   </div>
 </div>
+{{ else }}
+  {{- partial "archive" . }}
+{{ end }}
 {{ end }}

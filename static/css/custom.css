@@ -604,3 +604,14 @@ html[data-mode="dim"] .home-recent-title { color: #e2e8f0 !important; }
   .home-intro { padding: 2rem 1rem; }
   .home-sections-grid, .home-recent-grid { grid-template-columns: 1fr; }
 }
+
+/* Section page — pleine largeur propre */
+.section-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.section-grid {
+  padding: 1.5rem 2rem 3rem;
+}
