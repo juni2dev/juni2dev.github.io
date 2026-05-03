@@ -1,4 +1,4 @@
-baseURL = "https://juni2dev.github.io/ed-blog/"
+baseURL = "https://juni2dev.github.io/"
 title = "NetSeCore"
 theme = "clarity"
 defaultContentLanguage = "fr"

@@ -30,7 +30,7 @@ jobs:
           extended: true
 
       - name: Build
-        run: hugo --minify --baseURL "https://juni2dev.github.io/ed-blog/"
+        run: hugo --minify --baseURL "https://juni2dev.github.io/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
