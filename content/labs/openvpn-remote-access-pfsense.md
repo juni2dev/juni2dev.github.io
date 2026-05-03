@@ -13,6 +13,8 @@ toc = true
 
 Ce lab documente la mise en place complète d'un **VPN d'accès à distance** utilisant **OpenVPN** sur **pfSense**. Il couvre l'intégralité de la chaîne : création d'une autorité de certification interne (root-CA), émission d'un certificat serveur et d'un certificat client, configuration du serveur OpenVPN via le Wizard pfSense, export du profil client, et quelques tests de validation par capture réseau Wireshark.
 
+<!--more-->
+
 > ⚠️ Contrairement à un VPN site-à-site où il aurait fallu mettre en place au moins deux pfSense, le présent scénario met en lumière un utilisateur mobile se connectant à un serveur distant typiquement le réseau d'entreprise (télétravailleur / télétravailleuse). on peut modéliser la connexion comme suit **utilisateur ↔ serveur** . Par ailleurs, pfSense endossera la fonction de serveur d'authentififaction (local user authentication) bien qu'il soit tout à fait possible d'utiliser LDAP/Radius. Ce choix se justifie par une gestion plus simple au travers de la section User manager du GUI aussi, le test sera effectué avec un seul utilisateur (user).
 ---
 

@@ -58,9 +58,18 @@
     progressBar.style.width = percent + '%';
   }
 
+  // === 4. Navbar scroll glassmorphism ===
+  const navHeader = document.querySelector('header');
+  function updateNavbar() {
+    if (!navHeader) return;
+    if (window.scrollY > 40) navHeader.classList.add('scrolled');
+    else navHeader.classList.remove('scrolled');
+  }
+
   window.addEventListener('scroll', () => {
     updateToc();
     updateProgress();
+    updateNavbar();
   }, { passive: true });
 
   // Init

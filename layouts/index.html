@@ -1,21 +1,75 @@
 {{ define "main" }}
+
+{{/* SVG icon map keyed by section slug */}}
+{{- $icons := dict
+  "cybersecurite" `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+  "reseau"        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`
+  "labs"          `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6m-6 0v7l-4 9h14l-4-9V3M9 3H7M15 3h2"/></svg>`
+  "articles"      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`
+}}
+
 <div class="home-layout">
-  <section class="home-intro">
-    <p class="home-tagline">Labs · Cybersécurité · Réseaux</p>
-    <p>Writeups techniques, labs pratiques et notes de veille — du réseau à l'offensive.</p>
+
+  <!-- ═══════════════════════════════════════ HERO -->
+  <section class="home-hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        NetSeCore
+      </div>
+      <h1 class="hero-title">Du réseau à <span class="hero-accent">l'offensive.</span></h1>
+      <p class="hero-subtitle">Writeups techniques, labs pratiques et notes de veille — de la couche réseau à l'exploitation.</p>
+      <div class="hero-actions">
+        {{ with site.GetPage "/labs" }}
+        <a href="{{ .Permalink }}" class="btn-primary">Explorer les labs →</a>
+        {{ end }}
+        {{ with site.GetPage "/cybersecurite" }}
+        <a href="{{ .Permalink }}" class="btn-ghost">Cybersécurité</a>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="hero-terminal">
+      <div class="terminal-header">
+        <span class="terminal-dot terminal-red"></span>
+        <span class="terminal-dot terminal-yellow"></span>
+        <span class="terminal-dot terminal-green"></span>
+        <span class="terminal-title">netsec@lab:~</span>
+      </div>
+      <div class="terminal-body">
+        <p><span class="t-prompt">$</span> nmap -sV 192.168.1.1</p>
+        <p class="t-output t-muted">Starting Nmap 7.94SVN...</p>
+        <p class="t-output t-muted">PORT&nbsp;&nbsp;&nbsp;&nbsp; STATE SERVICE&nbsp; VERSION</p>
+        <p class="t-output"><span class="t-port">22/tcp</span>&nbsp;&nbsp; open&nbsp; <span class="t-service">ssh</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OpenSSH 8.9</p>
+        <p class="t-output"><span class="t-port">80/tcp</span>&nbsp;&nbsp; open&nbsp; <span class="t-service">http</span>&nbsp;&nbsp;&nbsp;&nbsp; nginx 1.24</p>
+        <p class="t-output"><span class="t-port">443/tcp</span>&nbsp; open&nbsp; <span class="t-service">ssl/http</span> nginx 1.24</p>
+        <p class="t-output t-muted">Service detection performed.</p>
+        <p>&nbsp;</p>
+        <p><span class="t-prompt">$</span> <span class="t-cursor"></span></p>
+      </div>
+    </div>
   </section>
+
+  <!-- ═══════════════════════════════════════ SECTIONS -->
   <section class="home-sections">
     <h2>Explorer par thème</h2>
     <div class="home-sections-grid">
       {{ range .Site.Sections }}
+      {{- $slug := .Section }}
+      {{- $icon := index $icons $slug }}
       <a href="{{ .Permalink }}" class="home-section-card">
+        {{ with $icon }}
+        <div class="section-card-icon">{{ . | safeHTML }}</div>
+        {{ end }}
         <div class="home-section-title">{{ .Title }}</div>
-        <div class="home-section-desc">{{ .Description }}</div>
+        {{ with .Description }}<div class="home-section-desc">{{ . }}</div>{{ end }}
         <div class="home-section-count">{{ len .Pages }} article{{ if gt (len .Pages) 1 }}s{{ end }}</div>
       </a>
       {{ end }}
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════ RECENT -->
   <section class="home-recent">
     <h2>Derniers articles</h2>
     <div class="home-recent-grid">
@@ -26,6 +80,7 @@
         <div class="home-recent-meta">
           <span class="home-recent-section">{{ .Section }}</span>
           <span>{{ .Date.Format "02 Jan 2006" }}</span>
+          <span>{{ .ReadingTime }} min</span>
         </div>
         {{ if .Params.tags }}
         <div class="section-tags">
@@ -39,5 +94,6 @@
       {{ end }}
     </div>
   </section>
+
 </div>
 {{ end }}
