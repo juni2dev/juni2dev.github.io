@@ -17,7 +17,7 @@
         <span class="hero-badge-dot"></span>
         NetSeCore
       </div>
-      <h1 class="hero-title">Du réseau à <span class="hero-accent">l'offensive.</span></h1>
+      <h1 class="hero-title">La passerelle du réseau vers <span class="hero-accent">la cybersécurité.</span></h1>
       <p class="hero-subtitle">Writeups techniques, labs pratiques et notes de veille — de la couche réseau à l'exploitation.</p>
       <div class="hero-actions">
         {{ with site.GetPage "/labs" }}
@@ -37,14 +37,16 @@
         <span class="terminal-title">netsec@lab:~</span>
       </div>
       <div class="terminal-body">
-        <p><span class="t-prompt">$</span> nmap -sV 192.168.1.1</p>
-        <p class="t-output t-muted">Starting Nmap 7.94SVN...</p>
-        <p class="t-output t-muted">PORT&nbsp;&nbsp;&nbsp;&nbsp; STATE SERVICE&nbsp; VERSION</p>
-        <p class="t-output"><span class="t-port">22/tcp</span>&nbsp;&nbsp; open&nbsp; <span class="t-service">ssh</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OpenSSH 8.9</p>
-        <p class="t-output"><span class="t-port">80/tcp</span>&nbsp;&nbsp; open&nbsp; <span class="t-service">http</span>&nbsp;&nbsp;&nbsp;&nbsp; nginx 1.24</p>
-        <p class="t-output"><span class="t-port">443/tcp</span>&nbsp; open&nbsp; <span class="t-service">ssl/http</span> nginx 1.24</p>
-        <p class="t-output t-muted">Service detection performed.</p>
-        <p>&nbsp;</p>
+        <p><span class="t-prompt">$</span> nmap -sV --open 192.168.1.105</p>
+        <p class="t-output t-muted">PORT&nbsp;&nbsp; STATE SERVICE VERSION</p>
+        <p class="t-output"><span class="t-port">22/tcp</span> open&nbsp; <span class="t-service">ssh</span>&nbsp;&nbsp;&nbsp; OpenSSH 7.6p1</p>
+        <p class="t-output"><span class="t-port">80/tcp</span> open&nbsp; <span class="t-service">http</span>&nbsp;&nbsp; Apache 2.4.49</p>
+        <p class="t-output t-muted">2 services detected.</p>
+        <p><span class="t-prompt">$</span> searchsploit Apache 2.4.49</p>
+        <p class="t-output t-muted">----------------------------------</p>
+        <p class="t-output"><span class="t-warn">[+]</span> Path Traversal &nbsp;&nbsp;<span class="t-cve">CVE-2021-41773</span></p>
+        <p class="t-output"><span class="t-warn">[+]</span> RCE via PT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-cve">CVE-2021-42013</span></p>
+        <p class="t-output t-muted">2 exploits found.</p>
         <p><span class="t-prompt">$</span> <span class="t-cursor"></span></p>
       </div>
     </div>
