@@ -966,8 +966,40 @@ header.section-header h1::after {
 .section-description {
   color: rgba(255,255,255,0.65);
   font-size: 1rem;
-  margin: 0;
+  margin: 0 0 1.2rem;
   position: relative;
+}
+
+.section-topics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+}
+
+.section-topics-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.35);
+}
+
+.section-topics-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.section-topic-pill {
+  background: rgba(56,189,248,0.1);
+  border: 1px solid rgba(56,189,248,0.22);
+  color: #7dd3fc;
+  border-radius: 999px;
+  padding: 0.22rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .section-count-badge {
@@ -1047,6 +1079,34 @@ article.section-card a:hover { color: var(--color-accent) !important; }
   color: var(--color-muted);
   line-height: 1.55;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.section-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.section-read-more {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-accent) !important;
+  text-decoration: none !important;
+  border: none !important;
+  white-space: nowrap;
+  transition: gap 0.15s ease;
+  letter-spacing: 0.01em;
+}
+
+.section-read-more:hover {
+  color: var(--color-accent2) !important;
 }
 
 /* ================================================

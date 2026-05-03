@@ -7,6 +7,14 @@
     </div>
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p class="section-description">{{ . }}</p>{{ end }}
+    {{ with .Params.topics }}
+    <div class="section-topics">
+      <span class="section-topics-label">Sujets abordés</span>
+      <div class="section-topics-pills">
+        {{ range . }}<span class="section-topic-pill">{{ . }}</span>{{ end }}
+      </div>
+    </div>
+    {{ end }}
   </header>
   {{ if .Pages }}
   <div class="section-grid">
@@ -18,14 +26,17 @@
         <span>·</span>
         <span>{{ .ReadingTime }} min de lecture</span>
       </div>
-      {{ with .Summary }}<p class="section-excerpt">{{ . | plainify | truncate 130 }}</p>{{ end }}
-      {{ if .Params.tags }}
-      <div class="section-tags">
-        {{ range first 3 .Params.tags }}
-        <span class="section-tag">{{ . }}</span>
+      {{ with .Summary }}<p class="section-excerpt">{{ . | plainify | truncate 280 }}</p>{{ end }}
+      <div class="section-card-footer">
+        {{ if .Params.tags }}
+        <div class="section-tags">
+          {{ range first 3 .Params.tags }}
+          <span class="section-tag">{{ . }}</span>
+          {{ end }}
+        </div>
         {{ end }}
+        <a href="{{ .Permalink }}" class="section-read-more">Lire la suite →</a>
       </div>
-      {{ end }}
     </article>
     {{ end }}
   </div>
