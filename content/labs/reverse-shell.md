@@ -2,7 +2,7 @@
 title = "splunk"
 date = 2026-05-12
 tags = ["splunk"]
-draft = true
+draft = false
 toc = true
 description = "splunk"
 +++
