@@ -180,9 +180,10 @@ def saisir_metadonnees():
         if src.is_file():
             STATIC_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
             dst = STATIC_IMAGES_DIR / src.name
-            shutil.copy2(src, dst)
+            if src.resolve() != dst.resolve():
+                shutil.copy2(src, dst)
             thumbnail = f"images/{src.name}"
-            ok(f"Thumbnail copié : {src.name}")
+            ok(f"Thumbnail : {src.name}")
         else:
             err(f"Fichier introuvable : {src} — thumbnail ignoré.")
 
