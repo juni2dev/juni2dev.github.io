@@ -102,17 +102,19 @@ def saisir_contenu():
             else:
                 err(f"Fichier introuvable : {p}")
     else:
-        print("  Collez votre texte ci-dessous.")
-        print(clr("90", "  (terminez avec une ligne contenant uniquement '---')"))
+        print("  Collez votre texte puis appuyez sur " + clr("1;33", "Ctrl+D") + " pour valider.")
         lignes = []
         while True:
             try:
                 ligne = input()
             except EOFError:
                 break
-            if ligne.strip() == "---":
-                break
             lignes.append(ligne)
+        # Réouvrir le terminal pour les questions suivantes
+        try:
+            sys.stdin = open("/dev/tty")
+        except OSError:
+            pass
         contenu = "\n".join(lignes)
         ok(f"Contenu reçu ({len(contenu)} caractères)")
         return contenu
