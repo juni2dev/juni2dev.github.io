@@ -171,12 +171,28 @@ def saisir_metadonnees():
     toc = ask_yn("Afficher une table des matières (toc) ?", default="o")
     draft = ask_yn("Publier en brouillon (draft) ?", default="n")
 
+    print("  Thumbnail : chemin vers un logo/image (ex: /home/user/logos/splunk.svg)")
+    print(clr("90", "  Laisser vide pour ignorer. L'image sera copiée dans static/images/."))
+    thumbnail_src = ask("Chemin du thumbnail", default="")
+    thumbnail = ""
+    if thumbnail_src:
+        src = Path(thumbnail_src).expanduser()
+        if src.is_file():
+            STATIC_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+            dst = STATIC_IMAGES_DIR / src.name
+            shutil.copy2(src, dst)
+            thumbnail = f"images/{src.name}"
+            ok(f"Thumbnail copié : {src.name}")
+        else:
+            err(f"Fichier introuvable : {src} — thumbnail ignoré.")
+
     return {
         "title": title,
         "description": description,
         "tags": tags,
         "toc": toc,
         "draft": draft,
+        "thumbnail": thumbnail,
         "date": date.today().isoformat(),
     }
 
@@ -185,16 +201,19 @@ def generer_frontmatter(meta):
     tags_str = ", ".join(f'"{t}"' for t in meta["tags"])
     toc_str = "true" if meta["toc"] else "false"
     draft_str = "true" if meta["draft"] else "false"
-    return (
+    fm = (
         "+++\n"
         f'title = "{meta["title"]}"\n'
         f'date = {meta["date"]}\n'
         f'tags = [{tags_str}]\n'
         f'draft = {draft_str}\n'
         f'toc = {toc_str}\n'
-        f'description = "{meta["description"]}"\n'
-        "+++"
     )
+    if meta.get("thumbnail"):
+        fm += f'thumbnail = "{meta["thumbnail"]}"\n'
+    fm += f'description = "{meta["description"]}"\n'
+    fm += "+++"
+    return fm
 
 
 def apercu(section, slug, meta, images):
@@ -205,6 +224,7 @@ def apercu(section, slug, meta, images):
     print(f"  Date     : {meta['date']}")
     print(f"  Tags     : {meta['tags']}")
     print(f"  TOC      : {meta['toc']} | Draft : {meta['draft']}")
+    print(f"  Thumbnail: {meta.get('thumbnail') or 'aucun'}")
     print(f"  Images   : {images if images else 'aucune'}")
     separator()
 

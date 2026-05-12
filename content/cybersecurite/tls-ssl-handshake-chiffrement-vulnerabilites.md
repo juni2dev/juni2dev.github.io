@@ -4,6 +4,7 @@ date = 2026-04-23
 tags = ["tls", "ssl", "cryptographie", "cybersécurité", "réseau"]
 draft = false
 toc = true
+thumbnail = "images/logo-tls.svg"
 description = "Retour sur TLS/SSL : comment fonctionne vraiment le handshake, ce que chiffre (et ne chiffre pas) ce protocole, et pourquoi certaines versions sont encore dangereuses aujourd'hui."
 +++
 

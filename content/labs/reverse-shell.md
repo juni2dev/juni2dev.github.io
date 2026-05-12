@@ -5,6 +5,7 @@ tags = ["splunk"]
 draft = false
 toc = true
 description = "splunk"
+thumbnail = "images/logo-splunk.svg"
 +++
 
 Déploiement d’instance sur Splunk

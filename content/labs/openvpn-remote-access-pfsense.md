@@ -5,7 +5,7 @@ title = '🔐 OpenVPN Remote Access Lab — pfSense'
 tags = ["vpn", "pfsense", "cybersécurité", "digital signature"]
 featureImage = "images/cover-openvpn.png"
 featureImageAlt = "Architecture OpenVPN pfSense"
-thumbnail = "images/panthere.png"
+thumbnail = "images/logo-openvpn.svg"
 toc = true
 +++
 
